@@ -19,6 +19,7 @@ Para desenvolver o protótipo da lâmpada inteligente, utilizou-se os seguintes 
 - 01 Lampanda de Led 10w - 110v/220v
 - 01 Mini protoboard
 - 01 Bocal Bivolt e27 - Porcelana
+- 01 PushButton
 - Jumpers
 - Plugue Macho - 250v 10a
 
