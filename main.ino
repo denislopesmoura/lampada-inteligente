@@ -3,7 +3,7 @@
  * Title: main.ino
  * Description: controlador de lâmpada utilizando sensor de Movimento de Presença PIR
  * Author: Denis Lopes
- * Data: 17/11/2019
+ * Data: 19/11/2019
  * 
  **/ 
 
@@ -11,30 +11,27 @@
 #define pinPIR 6
 #define pinButton 5
 
-int statusButton = 0;
-
 
 void setup()
 {
     Serial.println(9600);
     Serial.println("Iniciando detecção...\n");
 
-    //configura os pinos do rele, sensor de presença e Push Button
+    //configura os pinos do rele, sensor de presença e PushButton
     pinMode(pinRele, OUTPUT);
     pinMode(pinPIR, INPUT);
     pinMode(pinButton, INPUT);
 
     //garante que a lampada iniciará apagada
     digitalWrite(pinRele, LOW);
-    digitalWrite(pinButton, LOW);
 
 }
 
-void pushButton()
+void readPushButton()
     {
         
         //lê pino do botão
-        statusButton = digitalRead(pinButton);
+        int statusButton = digitalRead(pinButton);
 
         if(statusButton == HIGH)
         {   
@@ -43,22 +40,21 @@ void pushButton()
         }
         else
         {
-            //Liga a lãmpada
+            //Liga a lâmpada
             digitalWrite(pinRele, HIGH);
         }
         
     }
-    
+
 void loop()
 {
-    //lê o sensor PIR e o PushButton
-    bool valorPIR = digitalRead(pinPIR);
-    int statusButton = digitalRead(pinButton);
+    //lê o sensor PIR
+    bool valuePIR = digitalRead(pinPIR);
 
-    //controla botão de teste para ligar/desligar lâmpada
-    pushButton(statusButton);
+    //lê PushButton
+    readPushButton();
 
-    if(valorPIR)
+    if(valuePIR)
     {
         Serial.println("Detectado! \n");
        
