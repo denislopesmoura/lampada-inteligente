@@ -14,7 +14,7 @@
 
 void setup()
 {
-    Serial.println(9600);
+    Serial.begin(9600);
     Serial.println("Iniciando detecção...\n");
 
     //configura os pinos do rele, sensor de presença e PushButton
@@ -22,7 +22,7 @@ void setup()
     pinMode(pinPIR, INPUT);
     pinMode(pinButton, INPUT);
 
-    //garante que a lampada iniciará apagada
+    //garante que a lâmpada iniciará apagada
     digitalWrite(pinRele, LOW);
 
 }
@@ -30,7 +30,7 @@ void setup()
 void readPushButton()
     {
         
-        //lê pino do botão
+        //lê pino do Pushbutton
         int statusButton = digitalRead(pinButton);
 
         if(statusButton == HIGH)
